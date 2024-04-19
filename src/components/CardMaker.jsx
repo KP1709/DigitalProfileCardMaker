@@ -31,8 +31,7 @@ export default function CardMaker() {
         }))
     }
 
-    // Change icon colour
-    // Style components including card
+    // Styling Components
     window.addEventListener("load", startup, false);
 
     function startup() {
@@ -71,29 +70,27 @@ export default function CardMaker() {
         <main className="col">
             {/* Form section */}
             <section className="form">
-                <div id="firstNameLastNameEntry"className="col">
-                    <div className="col">
-                        <label htmlFor="firstName">First Name</label>
-                        <input
-                            id="firstName"
-                            type="text"
-                            className="form__input"
-                            placeholder="John"
-                            value={userData.firstName}
-                            name="firstName"
-                            onChange={HandleChange} />
-                    </div>
-                    <div className="col">
-                        <label htmlFor="lastName">Last Name</label>
-                        <input
-                            id="lastName"
-                            type="text"
-                            className="form__input"
-                            placeholder="Doe"
-                            value={userData.lastName}
-                            name="lastName"
-                            onChange={HandleChange} />
-                    </div>
+                <div className="col">
+                    <label htmlFor="firstName">First Name</label>
+                    <input
+                        id="firstName"
+                        type="text"
+                        className="form__input"
+                        placeholder="John"
+                        value={userData.firstName}
+                        name="firstName"
+                        onChange={HandleChange} />
+                </div>
+                <div className="col">
+                    <label htmlFor="lastName">Last Name</label>
+                    <input
+                        id="lastName"
+                        type="text"
+                        className="form__input"
+                        placeholder="Doe"
+                        value={userData.lastName}
+                        name="lastName"
+                        onChange={HandleChange} />
                 </div>
 
                 <div className="col">
@@ -191,7 +188,7 @@ export default function CardMaker() {
                         <h2 className="business__card-text" id="cardName">{userData.firstName} {userData.lastName}</h2>
                         <h3 className="business__card-text" id="cardLocation">{userData.location}</h3>
                         <p className="business__card-text" id="cardRole">{userData.role}</p>
-                        {userData.icon === "otter" && <FontAwesomeIcon icon={faOtter} size="2x"/>}
+                        {userData.icon === "otter" && <FontAwesomeIcon icon={faOtter} size="2x" />}
                         {userData.icon === "dog" && <FontAwesomeIcon icon={faDog} size="2x" />}
                         {userData.icon === "fish" && <FontAwesomeIcon icon={faFish} size="2x" />}
                         {userData.icon === "dragon" && <FontAwesomeIcon icon={faDragon} size="2x" />}
