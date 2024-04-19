@@ -100,7 +100,7 @@ input::file-selector-button {
     height: 8em;
     border-radius: 50%;
     border: transparent;
-    object-fit: contain;
+    object-fit:cover;
 }
 
 .business__card-text {
