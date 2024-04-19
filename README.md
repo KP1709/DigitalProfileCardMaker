@@ -17,7 +17,7 @@ While learning React through Bob Ziroll's Scrimba Course (Learn React), I paid t
 - Users can select a photo from their device to use.
 - An icon can be included at the bottom of the card if users chose so.
 - Users have freedom over the colours they pick for the header, card background and image border.
-
+- Responsive design so the page can be displayed on different devices.
 
 ## 📚 Resources used
 - Understanding colour input - https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/color
@@ -26,10 +26,12 @@ While learning React through Bob Ziroll's Scrimba Course (Learn React), I paid t
 - Scrimba's Learn Javascript (I took the previous version of the course before the firebase module was added) - https://scrimba.com/learn/learnjavascript
 - Scrimba's Learn Accessible Web Design - https://scrimba.com/learn/accessibility
 
-
 ## ➕ Potential features to add
 - Able to download card as an image
 - Ability to change font colour
 - Users choosing the colour of the icon (If possible in Font Awesome)
 - Changing UI of colour picking input
     - Explore React Color package - https://casesandberg.github.io/react-color/
+
+## 🩹 Fixed to consider
+- On mobile devices, the colour input does not change at all
