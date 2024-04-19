@@ -2,7 +2,7 @@ import React from "react"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faOtter, faDog, faFish, faDragon, faSpider, faDove, faHippo } from "@fortawesome/free-solid-svg-icons";
 
-import { toPng } from 'html-to-image'; // Does not support divs/ sections
+// import { toPng } from 'html-to-image'; // Does not support divs/ sections
 
 
 export default function CardMaker() {
@@ -37,13 +37,13 @@ export default function CardMaker() {
 
     function startup() {
         let headerStyle = document.getElementById("headerBgColour")
-        headerStyle.addEventListener("change", UpdateCardHeader, false);
+        headerStyle.addEventListener("input", UpdateCardHeader, false);
 
         let backgroundStyle = document.getElementById("cardBgColour")
-        backgroundStyle.addEventListener("change", UpdateCardBody, false);
+        backgroundStyle.addEventListener("input", UpdateCardBody, false);
 
         let imageBorderStyle = document.getElementById("imageBorderColour")
-        imageBorderStyle.addEventListener("change", UpdateImageBorderColour, false)
+        imageBorderStyle.addEventListener("input", UpdateImageBorderColour, false)
     }
 
     function UpdateCardHeader(event) {
