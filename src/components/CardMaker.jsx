@@ -188,13 +188,13 @@ export default function CardMaker() {
                         <h2 className="business__card-text" id="cardName">{userData.firstName} {userData.lastName}</h2>
                         <h3 className="business__card-text" id="cardLocation">{userData.location}</h3>
                         <p className="business__card-text" id="cardRole">{userData.role}</p>
-                        {userData.icon === "otter" && <FontAwesomeIcon icon={faOtter} size="2x" />}
-                        {userData.icon === "dog" && <FontAwesomeIcon icon={faDog} size="2x" />}
-                        {userData.icon === "fish" && <FontAwesomeIcon icon={faFish} size="2x" />}
-                        {userData.icon === "dragon" && <FontAwesomeIcon icon={faDragon} size="2x" />}
-                        {userData.icon === "spider" && <FontAwesomeIcon icon={faSpider} size="2x" />}
-                        {userData.icon === "hippo" && <FontAwesomeIcon icon={faHippo} size="2x" />}
-                        {userData.icon === "dove" && <FontAwesomeIcon icon={faDove} size="2x" />}
+                        {userData.icon === "otter" && <FontAwesomeIcon icon={faOtter} size="1x" />}
+                        {userData.icon === "dog" && <FontAwesomeIcon icon={faDog} size="1x" />}
+                        {userData.icon === "fish" && <FontAwesomeIcon icon={faFish} size="1x" />}
+                        {userData.icon === "dragon" && <FontAwesomeIcon icon={faDragon} size="1x" />}
+                        {userData.icon === "spider" && <FontAwesomeIcon icon={faSpider} size="1x" />}
+                        {userData.icon === "hippo" && <FontAwesomeIcon icon={faHippo} size="1x" />}
+                        {userData.icon === "dove" && <FontAwesomeIcon icon={faDove} size="1x" />}
                     </div>
                 </div>
             </section>
