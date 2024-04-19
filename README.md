@@ -33,5 +33,5 @@ While learning React through Bob Ziroll's Scrimba Course (Learn React), I paid t
 - Changing UI of colour picking input
     - Explore React Color package - https://casesandberg.github.io/react-color/
 
-## 🩹 Fixed to consider
+## 🩹 Fixes to consider
 - On mobile devices, the colour input does not change at all
