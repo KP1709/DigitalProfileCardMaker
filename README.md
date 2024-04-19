@@ -7,9 +7,14 @@ HTML / CSS / npm / React.js / Node.js / Vite / Font Awesome
 While learning React through Bob Ziroll's Scrimba Course (Learn React), I paid tribute to Per Borgen's Learn HTML and CSS course, his Javascript course and Fredrik Ridderfalk's Web Accessibility course by creating a customisable digital profile card. In this web application users enter their information edited on the card in real time. The way React handles forms was used as an advantage as the application constantly 'listens' for input changes. In addition, users can customise the card's colours in real time.
 
 ## 🛠️ Features
+- Users enter their details in a form. Each input has a label attached to increase accessibility.
+- Placeholder text describes an example entry to improve user experience of those using screen readers.
+- The user can select a photo from their device 
 
 ## 📚 Resources used
+- Understanding colour input - https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/color
 
+## 🎶 Other notes
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
 Currently, two official plugins are available:
