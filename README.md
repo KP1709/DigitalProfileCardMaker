@@ -1,5 +1,10 @@
 # Digital Profile Card Maker
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/585dec41-2da5-4039-825d-cb8cc2e72aa4/deploy-status)](https://app.netlify.com/sites/kareenapatel-digitalprofilecardmaker/deploys)
+
+https://kareenapatel-digitalprofilecardmaker.netlify.app/
+
+
 ## ⌨️ Technology + Asset stack
 HTML / CSS / npm / React.js / Node.js / Vite / Font Awesome
 
