@@ -4,20 +4,26 @@
 HTML / CSS / npm / React.js / Node.js / Vite / Font Awesome
 
 ## 🍼 Introduction
-While learning React through Bob Ziroll's Scrimba Course (Learn React), I paid tribute to Per Borgen's Learn HTML and CSS course, his Javascript course and Fredrik Ridderfalk's Web Accessibility course by creating a customisable digital profile card. In this web application users enter their information edited on the card in real time. The way React handles forms was used as an advantage as the application constantly 'listens' for input changes. In addition, users can customise the card's colours in real time.
+While learning React through Bob Ziroll's Scrimba Course (Learn React), I paid tribute to Per Harald Borgen's Learn HTML and CSS course, his Javascript course and Fredrik Ridderfalk's Learn Accessible Web Design course by creating a customisable digital profile card. In this web application users enter their information edited on the card in real time. The way React handles forms was used as an advantage as the application constantly 'listens' for input changes. In addition, users can customise the card's colours in real time.
 
 ## 🛠️ Features
 - Users enter their details in a form. Each input has a label attached to increase accessibility.
 - Placeholder text describes an example entry to improve user experience of those using screen readers.
-- The user can select a photo from their device 
+- Users can select a photo from their device to use.
+- An icon can be included at the bottom of the card if users chose so.
+- Users have freedom over the colours they pick for the header, card background and image border.
+
 
 ## 📚 Resources used
 - Understanding colour input - https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/color
+- Scrimba's Learn React - https://scrimba.com/learn/learnreact
+- Scrimba's Learn HTML and CSS - https://scrimba.com/learn/htmlandcss
+- Scrimba's Learn Javascript (I took the previous version of the course before the firebase module was added) - https://scrimba.com/learn/learnjavascript
+- Scrimba's Learn Accessible Web Design - https://scrimba.com/learn/accessibility
 
-## 🎶 Other notes
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## ➕ Potential features to add
+- Able to download card as an image
+- Users choosing the colour of the icon (If possible in Font Awesome)
+- Changing UI of colour picking input
+    - Explore React Color package - https://casesandberg.github.io/react-color/
