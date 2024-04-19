@@ -24,6 +24,7 @@ While learning React through Bob Ziroll's Scrimba Course (Learn React), I paid t
 
 ## ➕ Potential features to add
 - Able to download card as an image
+- Ability to change font colour
 - Users choosing the colour of the icon (If possible in Font Awesome)
 - Changing UI of colour picking input
     - Explore React Color package - https://casesandberg.github.io/react-color/
