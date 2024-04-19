@@ -181,7 +181,7 @@ export default function CardMaker() {
                 <h2 id="outputTitle">Profile Card Output</h2>
                 <div className="col" id="business__card">
                     <div id="business__card-header" className="col">
-                        <img src={userData.image} id="business__card-image" />
+                        <img src={userData.image} id="business__card-image" alt=""/>
                     </div>
 
                     <div id="business__card-body" className="col">
