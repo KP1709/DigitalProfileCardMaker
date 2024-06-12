@@ -2,8 +2,6 @@ import React from "react"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faOtter, faDog, faFish, faDragon, faSpider, faDove, faHippo } from "@fortawesome/free-solid-svg-icons";
 
-// import { toPng } from 'html-to-image'; // Does not support divs/ sections
-
 
 export default function CardMaker() {
     // Store user text to put on card
@@ -197,6 +195,7 @@ export default function CardMaker() {
                         {userData.icon === "dove" && <FontAwesomeIcon icon={faDove} size="1x" />}
                     </div>
                 </div>
+                <a href="" download="digitalProfileCard.png">Download Profile Card</a>
             </section>
         </main>
 
