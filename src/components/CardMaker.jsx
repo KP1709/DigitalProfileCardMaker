@@ -64,6 +64,10 @@ export default function CardMaker() {
         }
     }
 
+    function displayIcon() {
+
+    }
+
     return (
         <main className="col">
             {/* Form section */}
@@ -195,9 +199,7 @@ export default function CardMaker() {
                         {userData.icon === "dove" && <FontAwesomeIcon icon={faDove} size="1x" />}
                     </div>
                 </div>
-                <a href="" download="digitalProfileCard.png">Download Profile Card</a>
             </section>
         </main>
-
     )
 }
