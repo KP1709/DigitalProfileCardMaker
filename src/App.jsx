@@ -4,9 +4,9 @@ import CardMaker from "/src/components/CardMaker.jsx"
 
 export default function App() {
     return (
-        <main>
+        <>
             <Header />
             <CardMaker />
-        </main>
+        </>
     )
 }
