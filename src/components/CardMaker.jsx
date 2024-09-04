@@ -65,34 +65,16 @@ export default function CardMaker() {
     }
 
     function displayIcon() {
-        let selectedIcon;
         switch (userData.icon) {
-            case "otter":
-                selectedIcon = faOtter
-                break;
-            case "dog":
-                selectedIcon = faDog
-                break;
-            case "fish":
-                selectedIcon = faFish
-                break;
-            case "dragon":
-                selectedIcon = faDragon
-                break;
-            case "spider":
-                selectedIcon = faSpider
-                break;
-            case "hippo":
-                selectedIcon = faHippo
-                break;
-            case "dove":
-                selectedIcon = faDove
-                break;
-            default:
-                selectedIcon = "";
-                break;
+            case "otter": return faOtter
+            case "dog": return faDog
+            case "fish": return faFish
+            case "dragon": return faDragon
+            case "spider": return faSpider
+            case "hippo": return faHippo
+            case "dove": return faDove
+            default: return "";
         }
-        return selectedIcon;
     }
 
     return (
