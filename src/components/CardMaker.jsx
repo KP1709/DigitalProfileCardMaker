@@ -45,23 +45,17 @@ export default function CardMaker() {
 
     function UpdateCardHeader(event) {
         const cardHeader = document.getElementById("business__card-header");
-        if (cardHeader) {
-            cardHeader.style.backgroundColor = event.target.value;
-        }
+        if (cardHeader) cardHeader.style.backgroundColor = event.target.value;
     }
 
     function UpdateCardBody(event) {
         const cardBody = document.getElementById("business__card")
-        if (cardBody) {
-            cardBody.style.backgroundColor = event.target.value;
-        }
+        if (cardBody) cardBody.style.backgroundColor = event.target.value;
     }
 
     function UpdateImageBorderColour(event) {
         const imageBorder = document.getElementById("business__card-image")
-        if (imageBorder) {
-            imageBorder.style.border = `thick solid ${event.target.value}`
-        }
+        if (imageBorder) {imageBorder.style.border = `thick solid ${event.target.value}`
     }
 
     function displayIcon() {
