@@ -55,148 +55,150 @@ export default function CardMaker() {
 
     function UpdateImageBorderColour(event) {
         const imageBorder = document.getElementById("business__card-image")
-        if (imageBorder) {imageBorder.style.border = `thick solid ${event.target.value}`
-    }
-
-    function displayIcon() {
-        switch (userData.icon) {
-            case "otter": return faOtter
-            case "dog": return faDog
-            case "fish": return faFish
-            case "dragon": return faDragon
-            case "spider": return faSpider
-            case "hippo": return faHippo
-            case "dove": return faDove
-            default: return "";
+        if (imageBorder) {
+            imageBorder.style.border = `thick solid ${event.target.value}`
         }
+
+        function displayIcon() {
+            switch (userData.icon) {
+                case "otter": return faOtter
+                case "dog": return faDog
+                case "fish": return faFish
+                case "dragon": return faDragon
+                case "spider": return faSpider
+                case "hippo": return faHippo
+                case "dove": return faDove
+                default: return "";
+            }
+        }
+
+        return (
+            <main className="col">
+                {/* Form section */}
+                <section className="form">
+                    <div className="col">
+                        <label htmlFor="firstName">First Name</label>
+                        <input
+                            id="firstName"
+                            type="text"
+                            className="form__input"
+                            placeholder="John"
+                            value={userData.firstName}
+                            name="firstName"
+                            onChange={HandleChange} />
+                    </div>
+                    <div className="col">
+                        <label htmlFor="lastName">Last Name</label>
+                        <input
+                            id="lastName"
+                            type="text"
+                            className="form__input"
+                            placeholder="Doe"
+                            value={userData.lastName}
+                            name="lastName"
+                            onChange={HandleChange} />
+                    </div>
+
+                    <div className="col">
+                        <label htmlFor="location">Location</label>
+                        <input
+                            id="location"
+                            type="text"
+                            className="form__input"
+                            placeholder="London, United Kingdom"
+                            value={userData.location}
+                            name="location"
+                            onChange={HandleChange} />
+                    </div>
+
+                    <div className="col">
+                        <label htmlFor="image">Upload Headshot Image</label>
+                        <input
+                            id="image"
+                            type="file"
+                            name="image"
+                            className="form__input-image"
+                            accept="image/png, image/jpeg"
+                            onChange={loadFile} />
+                    </div>
+
+                    <div className="col">
+                        <label htmlFor="role">Current Role</label>
+                        <input
+                            id="role"
+                            type="text"
+                            className="form__input"
+                            placeholder="Engineer at X"
+                            value={userData.role}
+                            name="role"
+                            onChange={HandleChange} />
+                    </div>
+
+                    <div className="col">
+                        <label htmlFor="icon">Icon</label>
+                        <select id="icon"
+                            value={userData.icon}
+                            onChange={HandleChange}
+                            className="form__input-dropdown"
+                            name="icon">
+                            <option value="">--</option>
+                            <option value="otter">Otter</option>
+                            <option value="dog">Dog</option>
+                            <option value="hippo">Hippo</option>
+                            <option value="fish">Fish</option>
+                            <option value="dove">Dove</option>
+                            <option value="dragon">Dragon</option>
+                            <option value="spider">Spider</option>
+                        </select>
+                    </div>
+
+                    <div id="colourSelection" className="col">
+                        <div className="col">
+                            <label htmlFor="cardBgColour">Card Background Colour</label>
+                            <input
+                                id="cardBgColour"
+                                type="color"
+                                className="form__input-colour"
+                                name="cardBgColour" />
+                        </div>
+                        <div className="col">
+                            <label htmlFor="headerBgColour">Header Background Colour</label>
+                            <input
+                                id="headerBgColour"
+                                type="color"
+                                className="form__input-colour"
+                                name="headerBgColour" />
+                        </div>
+
+                        <div className="col">
+                            <label htmlFor="imageBorderColour">Image Border Colour</label>
+                            <input
+                                id="imageBorderColour"
+                                type="color"
+                                className="form__input-colour"
+                                name="imageBorderColour" />
+                        </div>
+
+                    </div>
+                </section>
+
+                {/* Output section */}
+                <section className="col">
+                    <h2 id="outputTitle">Profile Card Output</h2>
+                    <div className="col" id="business__card">
+                        <div id="business__card-header" className="col">
+                            <img src={userData.image} id="business__card-image" alt="" />
+                        </div>
+
+                        <div id="business__card-body" className="col">
+                            <h2 className="business__card-text" id="cardName">{userData.firstName} {userData.lastName}</h2>
+                            <h3 className="business__card-text" id="cardLocation">{userData.location}</h3>
+                            <p className="business__card-text" id="cardRole">{userData.role}</p>
+                            {userData.icon !== "" && <FontAwesomeIcon icon={displayIcon()} size="1x" />}
+                        </div>
+                    </div>
+                </section>
+            </main>
+        )
     }
-
-    return (
-        <main className="col">
-            {/* Form section */}
-            <section className="form">
-                <div className="col">
-                    <label htmlFor="firstName">First Name</label>
-                    <input
-                        id="firstName"
-                        type="text"
-                        className="form__input"
-                        placeholder="John"
-                        value={userData.firstName}
-                        name="firstName"
-                        onChange={HandleChange} />
-                </div>
-                <div className="col">
-                    <label htmlFor="lastName">Last Name</label>
-                    <input
-                        id="lastName"
-                        type="text"
-                        className="form__input"
-                        placeholder="Doe"
-                        value={userData.lastName}
-                        name="lastName"
-                        onChange={HandleChange} />
-                </div>
-
-                <div className="col">
-                    <label htmlFor="location">Location</label>
-                    <input
-                        id="location"
-                        type="text"
-                        className="form__input"
-                        placeholder="London, United Kingdom"
-                        value={userData.location}
-                        name="location"
-                        onChange={HandleChange} />
-                </div>
-
-                <div className="col">
-                    <label htmlFor="image">Upload Headshot Image</label>
-                    <input
-                        id="image"
-                        type="file"
-                        name="image"
-                        className="form__input-image"
-                        accept="image/png, image/jpeg"
-                        onChange={loadFile} />
-                </div>
-
-                <div className="col">
-                    <label htmlFor="role">Current Role</label>
-                    <input
-                        id="role"
-                        type="text"
-                        className="form__input"
-                        placeholder="Engineer at X"
-                        value={userData.role}
-                        name="role"
-                        onChange={HandleChange} />
-                </div>
-
-                <div className="col">
-                    <label htmlFor="icon">Icon</label>
-                    <select id="icon"
-                        value={userData.icon}
-                        onChange={HandleChange}
-                        className="form__input-dropdown"
-                        name="icon">
-                        <option value="">--</option>
-                        <option value="otter">Otter</option>
-                        <option value="dog">Dog</option>
-                        <option value="hippo">Hippo</option>
-                        <option value="fish">Fish</option>
-                        <option value="dove">Dove</option>
-                        <option value="dragon">Dragon</option>
-                        <option value="spider">Spider</option>
-                    </select>
-                </div>
-
-                <div id="colourSelection" className="col">
-                    <div className="col">
-                        <label htmlFor="cardBgColour">Card Background Colour</label>
-                        <input
-                            id="cardBgColour"
-                            type="color"
-                            className="form__input-colour"
-                            name="cardBgColour" />
-                    </div>
-                    <div className="col">
-                        <label htmlFor="headerBgColour">Header Background Colour</label>
-                        <input
-                            id="headerBgColour"
-                            type="color"
-                            className="form__input-colour"
-                            name="headerBgColour" />
-                    </div>
-
-                    <div className="col">
-                        <label htmlFor="imageBorderColour">Image Border Colour</label>
-                        <input
-                            id="imageBorderColour"
-                            type="color"
-                            className="form__input-colour"
-                            name="imageBorderColour" />
-                    </div>
-
-                </div>
-            </section>
-
-            {/* Output section */}
-            <section className="col">
-                <h2 id="outputTitle">Profile Card Output</h2>
-                <div className="col" id="business__card">
-                    <div id="business__card-header" className="col">
-                        <img src={userData.image} id="business__card-image" alt="" />
-                    </div>
-
-                    <div id="business__card-body" className="col">
-                        <h2 className="business__card-text" id="cardName">{userData.firstName} {userData.lastName}</h2>
-                        <h3 className="business__card-text" id="cardLocation">{userData.location}</h3>
-                        <p className="business__card-text" id="cardRole">{userData.role}</p>
-                        {userData.icon !== "" && <FontAwesomeIcon icon={displayIcon()} size="1x" />}
-                    </div>
-                </div>
-            </section>
-        </main>
-    )
 }
