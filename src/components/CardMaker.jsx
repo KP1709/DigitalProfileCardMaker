@@ -1,146 +1,126 @@
-import React from "react"
+import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { HexColorInput, HexColorPicker } from "react-colorful";
 import { faOtter, faDog, faFish, faDragon, faSpider, faDove, faHippo } from "@fortawesome/free-solid-svg-icons";
+import styles from "../styles/CardMaker.module.css";
 
-
-export default function CardMaker() {
-    // Store user text to put on card
-    const [userData, setUserData] = React.useState({
+const CardMaker = () => {
+    const [userData, setUserData] = useState({
         firstName: "",
         lastName: "",
         image: "",
         role: "",
         location: "",
         icon: ""
-    })
+    });
 
-    // Create URL for image for it to be displayed
-    function loadFile(event) {
-        var image = document.getElementById('business__card-image');
-        image.src = URL.createObjectURL(event.target.files[0]);
+    const [colourCustomise, setColourCustomise] = useState({
+        headerBgColour: "#ffffff",
+        cardBgColour: "#ffffff",
+        imageBorderColour: "#ffffff"
+    });
+
+    const loadFile = (event) => {
+        const file = event.target.files[0];
+        if (!file) return;
+
+        setUserData(prevData => ({
+            ...prevData,
+            image: URL.createObjectURL(file)
+        }));
     };
 
-    // 'Listens' for change in user input
-    function HandleChange(event) {
-        const { name, value } = event.target
+    const handleChange = (event) => {
+        const { name, value } = event.target;
         setUserData(prevData => ({
             ...prevData,
             [name]: value
-        }))
-    }
+        }));
+    };
 
-    // Styling Components
-    window.addEventListener("load", startup, false);
-
-    function startup() {
-        let headerStyle = document.getElementById("headerBgColour")
-        headerStyle.addEventListener("input", UpdateCardHeader, false);
-
-        let backgroundStyle = document.getElementById("cardBgColour")
-        backgroundStyle.addEventListener("input", UpdateCardBody, false);
-
-        let imageBorderStyle = document.getElementById("imageBorderColour")
-        imageBorderStyle.addEventListener("input", UpdateImageBorderColour, false)
-    }
-
-    function UpdateCardHeader(event) {
-        const cardHeader = document.getElementById("business__card-header");
-        if (cardHeader) cardHeader.style.backgroundColor = event.target.value;
-    }
-
-    function UpdateCardBody(event) {
-        const cardBody = document.getElementById("business__card")
-        if (cardBody) cardBody.style.backgroundColor = event.target.value;
-    }
-
-    function UpdateImageBorderColour(event) {
-        const imageBorder = document.getElementById("business__card-image")
-        if (imageBorder) {
-            imageBorder.style.border = `thick solid ${event.target.value}`
-        }
-    }
-
-    function displayIcon() {
+    const displayIcon = () => {
         switch (userData.icon) {
-            case "otter": return faOtter
-            case "dog": return faDog
-            case "fish": return faFish
-            case "dragon": return faDragon
-            case "spider": return faSpider
-            case "hippo": return faHippo
-            case "dove": return faDove
+            case "otter": return faOtter;
+            case "dog": return faDog;
+            case "fish": return faFish;
+            case "dragon": return faDragon;
+            case "spider": return faSpider;
+            case "hippo": return faHippo;
+            case "dove": return faDove;
             default: return "";
         }
-    }
+    };
 
     return (
-        <main className="col">
+        <main className={styles.layout}>
             {/* Form section */}
-            <section className="form">
-                <div className="col">
-                    <label htmlFor="firstName">First Name</label>
+            <form className={styles.form}>
+                <h2 className={styles.sectionTitle}>Profile details</h2>
+                <div className={styles.field}>
+                    <label className={styles.label} htmlFor="firstName">First Name</label>
                     <input
                         id="firstName"
                         type="text"
-                        className="form__input"
+                        className={styles.input}
                         placeholder="John"
                         value={userData.firstName}
                         name="firstName"
-                        onChange={HandleChange} />
+                        onChange={handleChange} />
                 </div>
-                <div className="col">
-                    <label htmlFor="lastName">Last Name</label>
+                <div className={styles.field}>
+                    <label className={styles.label} htmlFor="lastName">Last Name</label>
                     <input
                         id="lastName"
                         type="text"
-                        className="form__input"
+                        className={styles.input}
                         placeholder="Doe"
                         value={userData.lastName}
                         name="lastName"
-                        onChange={HandleChange} />
+                        onChange={handleChange} />
                 </div>
 
-                <div className="col">
-                    <label htmlFor="location">Location</label>
+                <div className={styles.field}>
+                    <label className={styles.label} htmlFor="location">Location</label>
                     <input
                         id="location"
                         type="text"
-                        className="form__input"
+                        className={styles.input}
                         placeholder="London, United Kingdom"
                         value={userData.location}
                         name="location"
-                        onChange={HandleChange} />
+                        onChange={handleChange} />
                 </div>
 
-                <div className="col">
-                    <label htmlFor="image">Upload Headshot Image</label>
+                <div className={styles.field}>
+                    <label className={styles.label} htmlFor="image">Upload Headshot Image</label>
                     <input
                         id="image"
                         type="file"
                         name="image"
-                        className="form__input-image"
+                        className={`${styles.input} ${styles.fileInput}`}
                         accept="image/png, image/jpeg"
                         onChange={loadFile} />
                 </div>
 
-                <div className="col">
-                    <label htmlFor="role">Current Role</label>
+                <div className={styles.field}>
+                    <label className={styles.label} htmlFor="role">Current Role</label>
                     <input
                         id="role"
                         type="text"
-                        className="form__input"
+                        className={styles.input}
                         placeholder="Engineer at X"
                         value={userData.role}
                         name="role"
-                        onChange={HandleChange} />
+                        onChange={handleChange} />
                 </div>
 
-                <div className="col">
-                    <label htmlFor="icon">Icon</label>
-                    <select id="icon"
+                <div className={styles.field}>
+                    <label className={styles.label} htmlFor="icon">Icon</label>
+                    <select
+                        id="icon"
                         value={userData.icon}
-                        onChange={HandleChange}
-                        className="form__input-dropdown"
+                        onChange={handleChange}
+                        className={styles.input}
                         name="icon">
                         <option value="">--</option>
                         <option value="otter">Otter</option>
@@ -153,52 +133,78 @@ export default function CardMaker() {
                     </select>
                 </div>
 
-                <div id="colourSelection" className="col">
-                    <div className="col">
-                        <label htmlFor="cardBgColour">Card Background Colour</label>
-                        <input
-                            id="cardBgColour"
-                            type="color"
-                            className="form__input-colour"
-                            name="cardBgColour" />
+                <section className={styles.colourSection} aria-label="Card colours">
+                    <h3 className={styles.groupTitle}>Card colours</h3>
+                    <div className={styles.colourField}>
+                        <label className={styles.label} id="cardBgColourLabel" htmlFor="cardBgColourInput">Card Background Colour</label>
+                        <HexColorPicker
+                            aria-labelledby="cardBgColourLabel"
+                            className={`${styles.picker} ${styles.colourControl}`}
+                            color={colourCustomise.cardBgColour}
+                            onChange={(value) => setColourCustomise(prevData => ({ ...prevData, cardBgColour: value }))}
+                        />
+                        <HexColorInput
+                            id="cardBgColourInput"
+                            className={`${styles.input} ${styles.colourControl}`}
+                            color={colourCustomise.cardBgColour}
+                            onChange={(value) => setColourCustomise(prevData => ({ ...prevData, cardBgColour: value }))}
+                            prefixed
+                        />
                     </div>
-                    <div className="col">
-                        <label htmlFor="headerBgColour">Header Background Colour</label>
-                        <input
-                            id="headerBgColour"
-                            type="color"
-                            className="form__input-colour"
-                            name="headerBgColour" />
+                    <div className={styles.colourField}>
+                        <label className={styles.label} id="headerBgColourLabel" htmlFor="headerBgColourInput">Header Background Colour</label>
+                        <HexColorPicker
+                            aria-labelledby="headerBgColourLabel"
+                            className={`${styles.picker} ${styles.colourControl}`}
+                            color={colourCustomise.headerBgColour}
+                            onChange={(value) => setColourCustomise(prevData => ({ ...prevData, headerBgColour: value }))}
+                        />
+                        <HexColorInput
+                            id="headerBgColourInput"
+                            className={`${styles.input} ${styles.colourControl}`}
+                            color={colourCustomise.headerBgColour}
+                            onChange={(value) => setColourCustomise(prevData => ({ ...prevData, headerBgColour: value }))}
+                            prefixed
+                        />
                     </div>
 
-                    <div className="col">
-                        <label htmlFor="imageBorderColour">Image Border Colour</label>
-                        <input
-                            id="imageBorderColour"
-                            type="color"
-                            className="form__input-colour"
-                            name="imageBorderColour" />
+                    <div className={styles.colourField}>
+                        <label className={styles.label} id="imageBorderColourLabel" htmlFor="imageBorderColourInput">Image Border Colour</label>
+                        <HexColorPicker
+                            aria-labelledby="imageBorderColourLabel"
+                            className={`${styles.picker} ${styles.colourControl}`}
+                            color={colourCustomise.imageBorderColour}
+                            onChange={(value) => setColourCustomise(prevData => ({ ...prevData, imageBorderColour: value }))}
+                        />
+                        <HexColorInput
+                            id="imageBorderColourInput"
+                            className={`${styles.input} ${styles.colourControl}`}
+                            color={colourCustomise.imageBorderColour}
+                            onChange={(value) => setColourCustomise(prevData => ({ ...prevData, imageBorderColour: value }))}
+                            prefixed
+                        />
                     </div>
-
-                </div>
-            </section>
+                </section>
+            </form>
 
             {/* Output section */}
-            <section className="col">
-                <h2 id="outputTitle">Profile Card Output</h2>
-                <div className="col" id="business__card">
-                    <div id="business__card-header" className="col">
-                        <img src={userData.image} id="business__card-image" alt="" />
+            <section className={styles.output}>
+                <h2 className={styles.sectionTitle}>Profile Card Output</h2>
+                <div className={styles.card}>
+                    <div className={styles.cardHeader} style={{ backgroundColor: colourCustomise.headerBgColour }}>
+                        {userData.image != '' && <img src={userData.image} className={styles.portrait} alt="Profile Picture" style={{ borderColor: colourCustomise.imageBorderColour }} />}
                     </div>
 
-                    <div id="business__card-body" className="col">
-                        <h2 className="business__card-text" id="cardName">{userData.firstName} {userData.lastName}</h2>
-                        <h3 className="business__card-text" id="cardLocation">{userData.location}</h3>
-                        <p className="business__card-text" id="cardRole">{userData.role}</p>
-                        {userData.icon !== "" && <FontAwesomeIcon icon={displayIcon()} size="1x" />}
+                    <div className={styles.cardBody} style={{ backgroundColor: colourCustomise.cardBgColour }}>
+                        <span className={`${styles.cardText} ${styles.cardName}`}>{userData.firstName} {userData.lastName}</span>
+                        <span className={`${styles.cardText} ${styles.cardLocation}`}>{userData.location}</span>
+                        <p className={`${styles.cardText} ${styles.cardRole}`}>{userData.role}</p>
+                        {userData.icon !== "" && <FontAwesomeIcon className={styles.cardIcon} icon={displayIcon()} size="1x" />}
                     </div>
                 </div>
             </section>
         </main>
-    )
-}
+    );
+};
+
+export default CardMaker;

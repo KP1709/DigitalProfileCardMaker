@@ -1,6 +1,5 @@
-import React from "react"
-import Header from "/src/components/Header.jsx"
-import CardMaker from "/src/components/CardMaker.jsx"
+import Header from "/src/components/Header.jsx";
+import CardMaker from "/src/components/CardMaker.jsx";
 
 export default function App() {
     return (
@@ -8,5 +7,5 @@ export default function App() {
             <Header />
             <CardMaker />
         </>
-    )
+    );
 }

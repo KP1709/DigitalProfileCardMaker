@@ -1,9 +1,11 @@
-import React from "react"
+import styles from "../styles/Header.module.css";
 
-export default function Header() {
+const Header = () => {
     return (
-        <header>
-            <h2 className="title">Digital Profile Card Maker</h2>
+        <header className={styles.header}>
+            <h1 className={styles.title}>Digital Profile Card Maker</h1>
         </header>
-    )
-}
+    );
+};
+
+export default Header;
