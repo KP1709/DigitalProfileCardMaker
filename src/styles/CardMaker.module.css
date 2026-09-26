@@ -25,8 +25,7 @@
     line-height: 1.35;
 }
 
-.field,
-.colourField {
+.field {
     display: flex;
     flex-direction: column;
     align-content: start;
@@ -94,21 +93,6 @@
     color: var(--colour-ink);
     font-size: 1rem;
     font-weight: 600;
-}
-
-.picker {
-    height: 170px;
-}
-
-.colourField .colourControl {
-    width: 100%;
-    max-width: 420px;
-    min-width: 0;
-    box-sizing: border-box;
-}
-
-.colourField .input {
-    font-family: monospace;
 }
 
 .output {

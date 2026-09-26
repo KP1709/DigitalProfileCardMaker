@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { HexColorInput, HexColorPicker } from "react-colorful";
 import { faOtter, faDog, faFish, faDragon, faSpider, faDove, faHippo } from "@fortawesome/free-solid-svg-icons";
 import styles from "../styles/CardMaker.module.css";
+import ColourControl from "./ColourControl.jsx";
 
 const CardMaker = () => {
     const [userData, setUserData] = useState({
@@ -135,55 +135,24 @@ const CardMaker = () => {
 
                 <section className={styles.colourSection} aria-label="Card colours">
                     <h3 className={styles.groupTitle}>Card colours</h3>
-                    <div className={styles.colourField}>
-                        <label className={styles.label} id="cardBgColourLabel" htmlFor="cardBgColourInput">Card Background Colour</label>
-                        <HexColorPicker
-                            aria-labelledby="cardBgColourLabel"
-                            className={`${styles.picker} ${styles.colourControl}`}
-                            color={colourCustomise.cardBgColour}
-                            onChange={(value) => setColourCustomise(prevData => ({ ...prevData, cardBgColour: value }))}
-                        />
-                        <HexColorInput
-                            id="cardBgColourInput"
-                            className={`${styles.input} ${styles.colourControl}`}
-                            color={colourCustomise.cardBgColour}
-                            onChange={(value) => setColourCustomise(prevData => ({ ...prevData, cardBgColour: value }))}
-                            prefixed
-                        />
-                    </div>
-                    <div className={styles.colourField}>
-                        <label className={styles.label} id="headerBgColourLabel" htmlFor="headerBgColourInput">Header Background Colour</label>
-                        <HexColorPicker
-                            aria-labelledby="headerBgColourLabel"
-                            className={`${styles.picker} ${styles.colourControl}`}
-                            color={colourCustomise.headerBgColour}
-                            onChange={(value) => setColourCustomise(prevData => ({ ...prevData, headerBgColour: value }))}
-                        />
-                        <HexColorInput
-                            id="headerBgColourInput"
-                            className={`${styles.input} ${styles.colourControl}`}
-                            color={colourCustomise.headerBgColour}
-                            onChange={(value) => setColourCustomise(prevData => ({ ...prevData, headerBgColour: value }))}
-                            prefixed
-                        />
-                    </div>
-
-                    <div className={styles.colourField}>
-                        <label className={styles.label} id="imageBorderColourLabel" htmlFor="imageBorderColourInput">Image Border Colour</label>
-                        <HexColorPicker
-                            aria-labelledby="imageBorderColourLabel"
-                            className={`${styles.picker} ${styles.colourControl}`}
-                            color={colourCustomise.imageBorderColour}
-                            onChange={(value) => setColourCustomise(prevData => ({ ...prevData, imageBorderColour: value }))}
-                        />
-                        <HexColorInput
-                            id="imageBorderColourInput"
-                            className={`${styles.input} ${styles.colourControl}`}
-                            color={colourCustomise.imageBorderColour}
-                            onChange={(value) => setColourCustomise(prevData => ({ ...prevData, imageBorderColour: value }))}
-                            prefixed
-                        />
-                    </div>
+                    <ColourControl
+                        id="cardBgColour"
+                        label="Card Background Colour"
+                        value={colourCustomise.cardBgColour}
+                        onChange={(value) => setColourCustomise(prevData => ({ ...prevData, cardBgColour: value }))}
+                    />
+                    <ColourControl
+                        id="headerBgColour"
+                        label="Header Background Colour"
+                        value={colourCustomise.headerBgColour}
+                        onChange={(value) => setColourCustomise(prevData => ({ ...prevData, headerBgColour: value }))}
+                    />
+                    <ColourControl
+                        id="imageBorderColour"
+                        label="Image Border Colour"
+                        value={colourCustomise.imageBorderColour}
+                        onChange={(value) => setColourCustomise(prevData => ({ ...prevData, imageBorderColour: value }))}
+                    />
                 </section>
             </form>
 

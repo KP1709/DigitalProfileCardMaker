@@ -1,0 +1,39 @@
+.field {
+    display: flex;
+    flex-direction: column;
+    align-content: start;
+    gap: 8px;
+    min-width: 0;
+}
+
+.label {
+    color: var(--colour-muted);
+    font-size: 0.9rem;
+    font-weight: 600;
+    line-height: 1.4;
+}
+
+.picker {
+    height: 170px;
+}
+
+.control {
+    width: 100%;
+    max-width: 420px;
+    min-width: 0;
+    box-sizing: border-box;
+}
+
+.field .control {
+    width: 100%;
+}
+
+.input {
+    min-height: 44px;
+    padding: 10px 12px;
+    border: 1px solid var(--colour-line);
+    border-radius: 6px;
+    color: var(--colour-ink);
+    background: var(--colour-surface);
+    font-family: monospace;
+}
