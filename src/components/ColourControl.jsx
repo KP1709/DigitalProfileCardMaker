@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import { HexColorInput, HexColorPicker } from "react-colorful";
 import styles from "../styles/ColourControl.module.css";
 
@@ -24,6 +25,13 @@ const ColourControl = ({ id, label, value, onChange }) => {
             />
         </div>
     );
+};
+
+ColourControl.propTypes = {
+    id: PropTypes.string.isRequired,
+    label: PropTypes.string.isRequired,
+    value: PropTypes.string.isRequired,
+    onChange: PropTypes.func.isRequired
 };
 
 export default ColourControl;

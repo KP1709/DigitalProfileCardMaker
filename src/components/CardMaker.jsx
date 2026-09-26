@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faOtter, faDog, faFish, faDragon, faSpider, faDove, faHippo } from "@fortawesome/free-solid-svg-icons";
+import { faCopy, faDownload, faOtter, faDog, faFish, faDragon, faSpider, faDove, faHippo } from "@fortawesome/free-solid-svg-icons";
 import styles from "../styles/CardMaker.module.css";
 import ColourControl from "./ColourControl.jsx";
+import useCardImage from "../hooks/useCardImage.js";
 
 const CardMaker = () => {
     const [userData, setUserData] = useState({
@@ -19,6 +20,7 @@ const CardMaker = () => {
         cardBgColour: "#ffffff",
         imageBorderColour: "#ffffff"
     });
+    const { cardRef, copyImage, downloadImage, isBusy, status } = useCardImage();
 
     const loadFile = (event) => {
         const file = event.target.files[0];
@@ -159,7 +161,7 @@ const CardMaker = () => {
             {/* Output section */}
             <section className={styles.output}>
                 <h2 className={styles.sectionTitle}>Profile Card Output</h2>
-                <div className={styles.card}>
+                <div className={styles.card} ref={cardRef}>
                     <div className={styles.cardHeader} style={{ backgroundColor: colourCustomise.headerBgColour }}>
                         {userData.image != '' && <img src={userData.image} className={styles.portrait} alt="Profile Picture" style={{ borderColor: colourCustomise.imageBorderColour }} />}
                     </div>
@@ -171,6 +173,19 @@ const CardMaker = () => {
                         {userData.icon !== "" && <FontAwesomeIcon className={styles.cardIcon} icon={displayIcon()} size="1x" />}
                     </div>
                 </div>
+                <div className={styles.exportActions}>
+                    <button type="button" onClick={downloadImage} disabled={isBusy}>
+                        <FontAwesomeIcon icon={faDownload} aria-hidden="true" />
+                        Download PNG
+                    </button>
+                    <button type="button" onClick={copyImage} disabled={isBusy}>
+                        <FontAwesomeIcon icon={faCopy} aria-hidden="true" />
+                        Copy photo
+                    </button>
+                </div>
+                <p className={styles.exportStatus} role="status" aria-live="polite">
+                    {status}
+                </p>
             </section>
         </main>
     );

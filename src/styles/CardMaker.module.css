@@ -107,6 +107,48 @@
     text-align: center;
 }
 
+.exportActions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    width: min(100%, 320px);
+}
+
+.exportActions button {
+    display: inline-flex;
+    flex: 1 1 135px;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-height: 44px;
+    padding: 10px 12px;
+    border: 1px solid var(--colour-accent);
+    border-radius: 6px;
+    color: #ffffff;
+    background: var(--colour-accent);
+    font: inherit;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.exportActions button:hover:not(:disabled) {
+    background: var(--colour-accent-strong);
+}
+
+.exportActions button:disabled {
+    cursor: wait;
+    opacity: 0.65;
+}
+
+.exportStatus {
+    min-height: 1.5em;
+    margin: -8px 0 0;
+    color: var(--colour-muted);
+    font-size: 0.875rem;
+    text-align: center;
+}
+
 .card {
     display: flex;
     flex-direction: column;
