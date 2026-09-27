@@ -24,7 +24,3 @@ While learning React through Bob Ziroll's Scrimba Course (Learn React), I paid t
 - Scrimba's Learn HTML and CSS - https://scrimba.com/learn/htmlandcss
 - Scrimba's Learn Javascript (I took the previous version of the course before the firebase module was added) - https://scrimba.com/learn/learnjavascript
 - Scrimba's Learn Accessible Web Design - https://scrimba.com/learn/accessibility
-
-## ➕ Potential features to add
-- Ability to change font colour
-- Users choosing the colour of the icon (If possible in Font Awesome)

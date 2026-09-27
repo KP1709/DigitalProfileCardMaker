@@ -91,7 +91,7 @@ const CardMaker = () => {
         <main className={styles.layout}>
             {/* Form section */}
             <form className={styles.form}>
-                <h2 className={styles.sectionTitle}>Customize your card</h2>
+                <h2 className={styles.sectionTitle}>Customise your card</h2>
                 <TabGroup label="Card settings" defaultActiveTab="profile">
                     <TabPanel id="profile" label="Profile details">
                         <div className={styles.field}>
