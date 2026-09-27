@@ -75,26 +75,6 @@
     background: var(--colour-accent-strong);
 }
 
-.colourSection {
-    display: grid;
-    grid-column: 1 / -1;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 18px 16px;
-    min-width: 0;
-    margin: 8px 0 0;
-    padding: 20px 0 0;
-    border: 0;
-    border-top: 1px solid var(--colour-line);
-}
-
-.groupTitle {
-    grid-column: 1 / -1;
-    margin: 0;
-    color: var(--colour-ink);
-    font-size: 1rem;
-    font-weight: 600;
-}
-
 .clearButton {
     justify-self: start;
     min-height: 44px;
@@ -211,6 +191,7 @@
 .cardText {
     max-width: 100%;
     margin: 0;
+    color: var(--card-text-colour);
     line-height: 1.4;
 }
 
@@ -221,13 +202,13 @@
 }
 
 .cardLocation {
-    color: var(--colour-muted);
+    color: var(--card-text-colour);
     font-size: 1.05rem;
     font-weight: 500;
 }
 
 .cardRole {
-    color: var(--colour-muted);
+    color: var(--card-text-colour);
 }
 
 .cardIcon {
@@ -259,8 +240,7 @@
         padding: 28px 16px 44px;
     }
 
-    .form,
-    .colourSection {
+    .form {
         grid-template-columns: minmax(0, 1fr);
     }
 

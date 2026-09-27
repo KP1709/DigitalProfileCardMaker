@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCopy, faDownload, faOtter, faDog, faFish, faDragon, faSpider, faDove, faHippo } from "@fortawesome/free-solid-svg-icons";
 import styles from "../styles/CardMaker.module.css";
 import ColourControl from "./ColourControl.jsx";
+import { TabGroup, TabPanel } from "./TabGroup.jsx";
 import useCardImage from "../hooks/useCardImage.js";
 import { clearSessionState, readSessionState, writeSessionState } from "../lib/sessionStorage.js";
 
@@ -18,14 +19,15 @@ const initialUserData = {
 const initialColourCustomise = {
     headerBgColour: "#ffffff",
     cardBgColour: "#ffffff",
-    imageBorderColour: "#ffffff"
+    imageBorderColour: "#ffffff",
+    textColour: "#000000",
+    iconColour: "#000000"
 };
 
 const CardMaker = () => {
     const [userData, setUserData] = useState(() => readSessionState("userData", initialUserData));
 
     const [colourCustomise, setColourCustomise] = useState(() => readSessionState("colourCustomise", initialColourCustomise));
-
     const { cardRef, copyImage, downloadImage, isBusy, status } = useCardImage();
     const imageInputRef = useRef(null);
 
@@ -89,109 +91,124 @@ const CardMaker = () => {
         <main className={styles.layout}>
             {/* Form section */}
             <form className={styles.form}>
-                <h2 className={styles.sectionTitle}>Profile details</h2>
-                <div className={styles.field}>
-                    <label className={styles.label} htmlFor="firstName">First Name</label>
-                    <input
-                        id="firstName"
-                        type="text"
-                        className={styles.input}
-                        placeholder="John"
-                        value={userData.firstName}
-                        name="firstName"
-                        onChange={handleChange} />
-                </div>
-                <div className={styles.field}>
-                    <label className={styles.label} htmlFor="lastName">Last Name</label>
-                    <input
-                        id="lastName"
-                        type="text"
-                        className={styles.input}
-                        placeholder="Doe"
-                        value={userData.lastName}
-                        name="lastName"
-                        onChange={handleChange} />
-                </div>
+                <h2 className={styles.sectionTitle}>Customize your card</h2>
+                <TabGroup label="Card settings" defaultActiveTab="profile">
+                    <TabPanel id="profile" label="Profile details">
+                        <div className={styles.field}>
+                            <label className={styles.label} htmlFor="firstName">First Name</label>
+                            <input
+                                id="firstName"
+                                type="text"
+                                className={styles.input}
+                                placeholder="John"
+                                value={userData.firstName}
+                                name="firstName"
+                                onChange={handleChange} />
+                        </div>
+                        <div className={styles.field}>
+                            <label className={styles.label} htmlFor="lastName">Last Name</label>
+                            <input
+                                id="lastName"
+                                type="text"
+                                className={styles.input}
+                                placeholder="Doe"
+                                value={userData.lastName}
+                                name="lastName"
+                                onChange={handleChange} />
+                        </div>
 
-                <div className={styles.field}>
-                    <label className={styles.label} htmlFor="location">Location</label>
-                    <input
-                        id="location"
-                        type="text"
-                        className={styles.input}
-                        placeholder="London, United Kingdom"
-                        value={userData.location}
-                        name="location"
-                        onChange={handleChange} />
-                </div>
+                        <div className={styles.field}>
+                            <label className={styles.label} htmlFor="location">Location</label>
+                            <input
+                                id="location"
+                                type="text"
+                                className={styles.input}
+                                placeholder="London, United Kingdom"
+                                value={userData.location}
+                                name="location"
+                                onChange={handleChange} />
+                        </div>
 
-                <div className={styles.field}>
-                    <label className={styles.label} htmlFor="image">Upload Headshot Image</label>
-                    <input
-                        id="image"
-                        type="file"
-                        name="image"
-                        ref={imageInputRef}
-                        className={`${styles.input} ${styles.fileInput}`}
-                        accept="image/png, image/jpeg"
-                        onChange={loadFile} />
-                </div>
+                        <div className={styles.field}>
+                            <label className={styles.label} htmlFor="image">Upload Headshot Image</label>
+                            <input
+                                id="image"
+                                type="file"
+                                name="image"
+                                ref={imageInputRef}
+                                className={`${styles.input} ${styles.fileInput}`}
+                                accept="image/png, image/jpeg"
+                                onChange={loadFile} />
+                        </div>
 
-                <div className={styles.field}>
-                    <label className={styles.label} htmlFor="role">Current Role</label>
-                    <input
-                        id="role"
-                        type="text"
-                        className={styles.input}
-                        placeholder="Engineer at X"
-                        value={userData.role}
-                        name="role"
-                        onChange={handleChange} />
-                </div>
+                        <div className={styles.field}>
+                            <label className={styles.label} htmlFor="role">Current Role</label>
+                            <input
+                                id="role"
+                                type="text"
+                                className={styles.input}
+                                placeholder="Engineer at X"
+                                value={userData.role}
+                                name="role"
+                                onChange={handleChange} />
+                        </div>
 
-                <div className={styles.field}>
-                    <label className={styles.label} htmlFor="icon">Icon</label>
-                    <select
-                        id="icon"
-                        value={userData.icon}
-                        onChange={handleChange}
-                        className={styles.input}
-                        name="icon">
-                        <option value="">--</option>
-                        <option value="otter">Otter</option>
-                        <option value="dog">Dog</option>
-                        <option value="hippo">Hippo</option>
-                        <option value="fish">Fish</option>
-                        <option value="dove">Dove</option>
-                        <option value="dragon">Dragon</option>
-                        <option value="spider">Spider</option>
-                    </select>
-                </div>
+                        <div className={styles.field}>
+                            <label className={styles.label} htmlFor="icon">Icon</label>
+                            <select
+                                id="icon"
+                                value={userData.icon}
+                                onChange={handleChange}
+                                className={styles.input}
+                                name="icon">
+                                <option value="">--</option>
+                                <option value="otter">Otter</option>
+                                <option value="dog">Dog</option>
+                                <option value="hippo">Hippo</option>
+                                <option value="fish">Fish</option>
+                                <option value="dove">Dove</option>
+                                <option value="dragon">Dragon</option>
+                                <option value="spider">Spider</option>
+                            </select>
+                        </div>
+                    </TabPanel>
 
-                <section className={styles.colourSection} aria-label="Card colours">
-                    <h3 className={styles.groupTitle}>Card colours</h3>
-                    <ColourControl
-                        id="cardBgColour"
-                        label="Card Background Colour"
-                        value={colourCustomise.cardBgColour}
-                        onChange={(value) => setColourCustomise(prevData => ({ ...prevData, cardBgColour: value }))}
-                    />
-                    <ColourControl
-                        id="headerBgColour"
-                        label="Header Background Colour"
-                        value={colourCustomise.headerBgColour}
-                        onChange={(value) => setColourCustomise(prevData => ({ ...prevData, headerBgColour: value }))}
-                    />
-                    <ColourControl
-                        id="imageBorderColour"
-                        label="Image Border Colour"
-                        value={colourCustomise.imageBorderColour}
-                        onChange={(value) => setColourCustomise(prevData => ({ ...prevData, imageBorderColour: value }))}
-                    />
-                    <button className={styles.clearButton} type="button" onClick={clearForm}>
-                        Clear form
-                    </button>
-                </section>
+                    <TabPanel id="colours" label="Card colours" variant="colours">
+                        <ColourControl
+                            id="cardBgColour"
+                            label="Card Background Colour"
+                            value={colourCustomise.cardBgColour}
+                            onChange={(value) => setColourCustomise(prevData => ({ ...prevData, cardBgColour: value }))}
+                        />
+                        <ColourControl
+                            id="headerBgColour"
+                            label="Header Background Colour"
+                            value={colourCustomise.headerBgColour}
+                            onChange={(value) => setColourCustomise(prevData => ({ ...prevData, headerBgColour: value }))}
+                        />
+                        <ColourControl
+                            id="imageBorderColour"
+                            label="Image Border Colour"
+                            value={colourCustomise.imageBorderColour}
+                            onChange={(value) => setColourCustomise(prevData => ({ ...prevData, imageBorderColour: value }))}
+                        />
+                        <ColourControl
+                            id="textColour"
+                            label="Text Colour"
+                            value={colourCustomise.textColour}
+                            onChange={(value) => setColourCustomise(prevData => ({ ...prevData, textColour: value }))}
+                        />
+                        <ColourControl
+                            id="iconColour"
+                            label="Icon Colour"
+                            value={colourCustomise.iconColour}
+                            onChange={(value) => setColourCustomise(prevData => ({ ...prevData, iconColour: value }))}
+                        />
+                    </TabPanel>
+                </TabGroup>
+                <button className={styles.clearButton} type="button" onClick={clearForm}>
+                    Clear form
+                </button>
             </form>
 
             {/* Output section */}
@@ -202,11 +219,11 @@ const CardMaker = () => {
                         {userData.image != '' && <img src={userData.image} className={styles.portrait} alt="Profile Picture" style={{ borderColor: colourCustomise.imageBorderColour }} />}
                     </div>
 
-                    <div className={styles.cardBody} style={{ backgroundColor: colourCustomise.cardBgColour }}>
+                    <div className={styles.cardBody} style={{ backgroundColor: colourCustomise.cardBgColour, "--card-text-colour": colourCustomise.textColour }}>
                         <span className={`${styles.cardText} ${styles.cardName}`}>{userData.firstName} {userData.lastName}</span>
                         <span className={`${styles.cardText} ${styles.cardLocation}`}>{userData.location}</span>
                         <p className={`${styles.cardText} ${styles.cardRole}`}>{userData.role}</p>
-                        {userData.icon !== "" && <FontAwesomeIcon className={styles.cardIcon} icon={displayIcon()} size="1x" />}
+                        {userData.icon !== "" && <FontAwesomeIcon className={styles.cardIcon} icon={displayIcon()} size="1x" style={{ color: colourCustomise.iconColour }} />}
                     </div>
                 </div>
                 <div className={styles.exportActions}>
