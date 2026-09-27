@@ -1,35 +1,54 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCopy, faDownload, faOtter, faDog, faFish, faDragon, faSpider, faDove, faHippo } from "@fortawesome/free-solid-svg-icons";
 import styles from "../styles/CardMaker.module.css";
 import ColourControl from "./ColourControl.jsx";
 import useCardImage from "../hooks/useCardImage.js";
+import { clearSessionState, readSessionState, writeSessionState } from "../lib/sessionStorage.js";
+
+const initialUserData = {
+    firstName: "",
+    lastName: "",
+    image: "",
+    role: "",
+    location: "",
+    icon: ""
+};
+
+const initialColourCustomise = {
+    headerBgColour: "#ffffff",
+    cardBgColour: "#ffffff",
+    imageBorderColour: "#ffffff"
+};
 
 const CardMaker = () => {
-    const [userData, setUserData] = useState({
-        firstName: "",
-        lastName: "",
-        image: "",
-        role: "",
-        location: "",
-        icon: ""
-    });
+    const [userData, setUserData] = useState(() => readSessionState("userData", initialUserData));
 
-    const [colourCustomise, setColourCustomise] = useState({
-        headerBgColour: "#ffffff",
-        cardBgColour: "#ffffff",
-        imageBorderColour: "#ffffff"
-    });
+    const [colourCustomise, setColourCustomise] = useState(() => readSessionState("colourCustomise", initialColourCustomise));
+
     const { cardRef, copyImage, downloadImage, isBusy, status } = useCardImage();
+    const imageInputRef = useRef(null);
+
+    useEffect(() => {
+        writeSessionState("userData", userData);
+    }, [userData]);
+
+    useEffect(() => {
+        writeSessionState("colourCustomise", colourCustomise);
+    }, [colourCustomise]);
 
     const loadFile = (event) => {
         const file = event.target.files[0];
         if (!file) return;
 
-        setUserData(prevData => ({
-            ...prevData,
-            image: URL.createObjectURL(file)
-        }));
+        const reader = new FileReader();
+        reader.onload = () => {
+            setUserData(prevData => ({
+                ...prevData,
+                image: reader.result
+            }));
+        };
+        reader.readAsDataURL(file);
     };
 
     const handleChange = (event) => {
@@ -38,6 +57,19 @@ const CardMaker = () => {
             ...prevData,
             [name]: value
         }));
+    };
+
+    const clearForm = () => {
+        const clearedUserData = { ...initialUserData };
+        const resetColours = { ...initialColourCustomise };
+
+        clearSessionState();
+        setUserData(clearedUserData);
+        setColourCustomise(resetColours);
+
+        if (imageInputRef.current) {
+            imageInputRef.current.value = "";
+        }
     };
 
     const displayIcon = () => {
@@ -99,6 +131,7 @@ const CardMaker = () => {
                         id="image"
                         type="file"
                         name="image"
+                        ref={imageInputRef}
                         className={`${styles.input} ${styles.fileInput}`}
                         accept="image/png, image/jpeg"
                         onChange={loadFile} />
@@ -155,6 +188,9 @@ const CardMaker = () => {
                         value={colourCustomise.imageBorderColour}
                         onChange={(value) => setColourCustomise(prevData => ({ ...prevData, imageBorderColour: value }))}
                     />
+                    <button className={styles.clearButton} type="button" onClick={clearForm}>
+                        Clear form
+                    </button>
                 </section>
             </form>
 

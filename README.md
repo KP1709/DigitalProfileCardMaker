@@ -16,6 +16,7 @@ While learning React through Bob Ziroll's Scrimba Course (Learn React), I paid t
 - Users have freedom over the colours they pick for the header, card background and image border.
 - Responsive design so the page can be displayed on different devices.
 - Able to save profile card as image or copy to clipboard using html-to-image package
+- Retain infomation on refesh and reset/clear customisation 
 
 ## 📚 Resources
 - Understanding colour input - https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/color

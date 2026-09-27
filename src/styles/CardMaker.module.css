@@ -95,6 +95,24 @@
     font-weight: 600;
 }
 
+.clearButton {
+    justify-self: start;
+    min-height: 44px;
+    padding: 10px 14px;
+    border: 1px solid var(--colour-line);
+    border-radius: 6px;
+    color: var(--colour-ink);
+    background: var(--colour-surface);
+    font: inherit;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.clearButton:hover {
+    border-color: var(--colour-accent);
+    color: var(--colour-accent-strong);
+}
+
 .output {
     display: flex;
     flex-direction: column;
